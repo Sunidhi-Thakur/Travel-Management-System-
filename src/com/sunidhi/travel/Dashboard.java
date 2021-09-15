@@ -3,7 +3,6 @@ package com.sunidhi.travel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -47,7 +46,7 @@ public class Dashboard extends JFrame implements ActionListener{
         l3.setBounds(45,17,300,20);
         p1.add(l3);
         
-        ImageIcon i4 = new ImageIcon(ClassLoader.getSystemResource("./icons/home.jpg"));
+        ImageIcon i4 = new ImageIcon(ClassLoader.getSystemResource("./icons/dashboard.png"));
         Image i5 = i4.getImage().getScaledInstance(1650,1000, Image.SCALE_DEFAULT);
         ImageIcon i6 = new ImageIcon(i5);
         
@@ -136,6 +135,7 @@ public class Dashboard extends JFrame implements ActionListener{
         b9.setForeground(Color.WHITE);
         b9.setBounds(0,400,300,50);
         b9.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        b9.addActionListener(this);
         p2.add(b9);
         
         b10 = new JButton("View Booked Hotel");
@@ -143,23 +143,26 @@ public class Dashboard extends JFrame implements ActionListener{
         b10.setForeground(Color.WHITE);
         b10.setBounds(0,450,300,50);
         b10.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        b10.addActionListener(this);
         p2.add(b10);
         
-        b11 = new JButton("Destination");
+        b11 = new JButton("Payment");
         b11.setBackground(new Color(47,102,146));
         b11.setForeground(Color.WHITE);
         b11.setBounds(0,500,300,50);
         b11.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        b11.addActionListener(this);
         p2.add(b11);
         
-        b12 = new JButton("Payment");
+        b12 = new JButton("Notes");
         b12.setBackground(new Color(47,102,146));
         b12.setForeground(Color.WHITE);
         b12.setBounds(0,550,300,50);
         b12.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        b12.addActionListener(this);
         p2.add(b12);
         
-        b13 = new JButton("Notes");
+        b13 = new JButton("Calculator");
         b13.setBackground(new Color(47,102,146));
         b13.setForeground(Color.WHITE);
         b13.setBounds(0,600,300,50);
@@ -167,24 +170,17 @@ public class Dashboard extends JFrame implements ActionListener{
         b13.addActionListener(this);
         p2.add(b13);
         
-        b14 = new JButton("Calculator");
+        b14 = new JButton("About");
         b14.setBackground(new Color(47,102,146));
         b14.setForeground(Color.WHITE);
         b14.setBounds(0,650,300,50);
         b14.setFont(new Font("Tahoma", Font.PLAIN, 14));
         b14.addActionListener(this);
-        p2.add(b14);
-        
-        b15 = new JButton("About");
-        b15.setBackground(new Color(47,102,146));
-        b15.setForeground(Color.WHITE);
-        b15.setBounds(0,700,300,50);
-        b15.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        p2.add(b15);        
+        p2.add(b14);        
     }
     
     public static void main(String args[]){
-        new Dashboard("").setVisible(true);
+        new Dashboard("Sunidhi").setVisible(true);
     }
 
     @Override
@@ -198,23 +194,41 @@ public class Dashboard extends JFrame implements ActionListener{
         else if(ae.getSource() == b3){
             new ViewInfo(username).setVisible(true);
         }
+        else if(ae.getSource() == b4){
+            new DeleteUser(username).setVisible(true);
+        }
         else if(ae.getSource() == b5){
             new CheckPackage().setVisible(true);
         }
         else if(ae.getSource() == b6){
             new BookPackage(username).setVisible(true);
         }
-        else if(ae.getSource() == b14){
-            try{
-                Runtime.getRuntime().exec("calc.exe");
-            }catch(IOException e){}
-            
-        }else if(ae.getSource() == b13){
+        else if(ae.getSource() == b7){
+            new ViewPackage(username).setVisible(true);
+        }
+        else if(ae.getSource() == b8){
+            new CheckHotel().setVisible(true);
+        }
+        else if(ae.getSource() == b9){
+            new BookHotel(username).setVisible(true);
+        }
+        else if(ae.getSource() == b10){
+            new ViewHotel(username).setVisible(true);
+        }
+         else if(ae.getSource() == b11){
+            new Payment().setVisible(true);
+        }
+        else if(ae.getSource() == b12){
              try{
                 Runtime.getRuntime().exec("notepad.exe");
             }catch(IOException e){}
-            
-            
+        }
+        else if(ae.getSource() == b13){
+            try{
+                Runtime.getRuntime().exec("calc.exe");
+            }catch(IOException e){}
+        }else{
+            new About().setVisible(true);
         }
     }
     

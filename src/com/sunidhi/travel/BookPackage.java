@@ -150,15 +150,15 @@ public class BookPackage extends JFrame implements ActionListener {
        add(l8);
        
        try{
-             Conn c = new Conn();
+            Conn c = new Conn();
              ResultSet rs = c.s.executeQuery("select * from user where username='"+username+"'");
              while(rs.next()){
-                 l11.setText(rs.getString("username"));
-                 l12.setText(rs.getString("id"));
+                l11.setText(rs.getString("username"));
+                l12.setText(rs.getString("id"));
                  l13.setText(rs.getString("number"));
-                 l14.setText(rs.getString("phone"));
-             }
-         }catch(Exception e){}  
+                l14.setText(rs.getString("phone"));
+            }
+       }catch(Exception e){}
          
 
     }
@@ -191,10 +191,13 @@ public class BookPackage extends JFrame implements ActionListener {
             l15.setText("₹ "+(cost*p));
             
         }else if(ae.getSource() == b2){
+            String choice = ch.getSelectedItem();
+            if(choice.equals("God's Own Country: Kerala"))
+                choice = "God''s Own Country: Kerala";
             try{
                 Conn c = new Conn();
                 String sql = "insert into bookPackage values ('"+l11.getText()
-                        +"', '"+ch.getSelectedItem()+"', '"
+                        +"', '"+choice+"', '"
                         +Integer.parseInt(t1.getText())+"', '"+l12.getText()+"', '"
                         +l13.getText()+"', '"+l14.getText()+"','"
                         +Integer.parseInt(l15.getText().substring(2))+"')";
