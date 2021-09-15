@@ -180,7 +180,7 @@ public class Dashboard extends JFrame implements ActionListener{
     }
     
     public static void main(String args[]){
-        new Dashboard("Sunidhi").setVisible(true);
+        new Dashboard("").setVisible(true);
     }
 
     @Override
